@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yay -S sddm
+
 # Hyprland launched via UWSM and login directly as user, rely on disk encryption + hyprlock for security
 if ! command -v uwsm &>/dev/null || ! command -v plymouth &>/dev/null; then
   yay -S --noconfirm --needed uwsm plymouth
@@ -257,11 +259,14 @@ if ! systemctl is-enabled plymouth-quit-wait.service | grep -q masked; then
 fi
 
 # Enable omarchy-seamless-login.service only if not already enabled
-if ! systemctl is-enabled omarchy-seamless-login.service | grep -q enabled; then
-  sudo systemctl enable omarchy-seamless-login.service
-fi
+# if ! systemctl is-enabled omarchy-seamless-login.service | grep -q enabled; then
+#   sudo systemctl enable omarchy-seamless-login.service
+# fi
+#
 
 # Disable getty@tty1.service only if not already disabled
 if ! systemctl is-enabled getty@tty1.service | grep -q disabled; then
   sudo systemctl disable getty@tty1.service
 fi
+
+sudo systemctl enable sddm.service
