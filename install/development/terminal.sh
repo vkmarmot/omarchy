@@ -2,7 +2,7 @@
 
 yay -S --noconfirm --needed \
   wget curl unzip inetutils impala \
-  yazi \
+  yazi zsh-autosuggestions starship \
   fd eza fzf ripgrep zoxide bat jq \
   wl-clipboard fastfetch btop \
   man tldr less whois \
