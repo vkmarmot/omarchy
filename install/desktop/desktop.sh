@@ -6,7 +6,7 @@ yay -S --noconfirm --needed \
   nautilus sushi ffmpegthumbnailer \
   slurp satty \
   mpv evince imv \
-  chromium brave-bin bitwarden
+  chromium brave-bin bitwarden pipewire-pulse
 
 # Add screen recorder based on GPU
 if lspci | grep -qi 'nvidia'; then
