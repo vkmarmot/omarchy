@@ -3,7 +3,7 @@
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer wiremix wireplumber \
   fcitx5 fcitx5-gtk fcitx5-qt wl-clip-persist \
-  nautilus sushi ffmpegthumbnailer \
+  nautilus duf tmux sushi ffmpegthumbnailer \
   slurp satty \
   mpv evince imv \
   chromium brave-bin bitwarden pipewire-pulse
