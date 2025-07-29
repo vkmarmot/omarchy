@@ -13,7 +13,7 @@ ansi_art=' ▄██████▄    ▄▄▄▄███▄▄▄▄      �
 clear
 echo -e "\n$ansi_art\n"
 
-sudo pacman -Sy --noconfirm --needed git
+sudo pacman -Sy --noconfirm --needed git base-devel
 
 echo -e "\nCloning Omarchy..."
 
