@@ -65,6 +65,8 @@ show_subtext "Installing default applications [4/5]"
 #source $OMARCHY_INSTALL/apps/xtras.sh
 source $OMARCHY_INSTALL/apps/mimetypes.sh
 
+yay -Rns --noconfirm fcitx5 fcitx5-gtk fcitx5-qt fcitx5-configtool
+
 # Updates
 show_logo highlight
 show_subtext "Updating system packages [5/5]"
