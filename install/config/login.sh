@@ -1,10 +1,23 @@
 #!/bin/bash
 
-yay -S sddm
+yay -S lightdm lightdm-elephant-greeter
 
 # Hyprland launched via UWSM and login directly as user, rely on disk encryption + hyprlock for security
 if ! command -v uwsm &>/dev/null || ! command -v plymouth &>/dev/null; then
   yay -S --noconfirm --needed uwsm plymouth
+fi
+
+# lightdm setup
+if ! grep "^sessions-directory=" ./lightdm.conf; then
+  sed -i '/^\[LightDM\]/s/\[LightDM\]/\[LightDM\]\nsessions-directory=\/usr\/share\/lightdm\/sessions:\/usr\/share\/wayland-sessions:\/usr\/share\/xsessions/' lightdm.conf
+fi
+
+if ! grep "^greeters-directory=" ./lightdm.conf; then
+  sed -i '/^\[LightDM\]/s/\[LightDM\]/\[LightDM\]\ngreeters-directory=\/usr\/share\/lightdm\/greeters:\/usr\/share\/xgreeters/' lightdm.conf
+fi
+
+if ! grep "^greeter-session=" ./lightdm.conf; then
+  sed -i '/^\[Seat\:\*\]/s/\[Seat\:\*\]/\[Seat\:\*\]\ngreeter-session=lightdm-elephant-greeter/' lightdm.conf
 fi
 
 # ==============================================================================
@@ -269,4 +282,4 @@ if ! systemctl is-enabled getty@tty1.service | grep -q disabled; then
   sudo systemctl disable getty@tty1.service
 fi
 
-sudo systemctl enable sddm.service
+sudo systemctl enable lightdm.service
