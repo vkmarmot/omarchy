@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yay -S lightdm lightdm-elephant-greeter
+yay -S --noconfirm --needed lightdm lightdm-elephant-greeter
 
 # Hyprland launched via UWSM and login directly as user, rely on disk encryption + hyprlock for security
 if ! command -v uwsm &>/dev/null || ! command -v plymouth &>/dev/null; then
@@ -8,16 +8,16 @@ if ! command -v uwsm &>/dev/null || ! command -v plymouth &>/dev/null; then
 fi
 
 # lightdm setup
-if ! grep "^sessions-directory=" ./lightdm.conf; then
-  sed -i '/^\[LightDM\]/s/\[LightDM\]/\[LightDM\]\nsessions-directory=\/usr\/share\/lightdm\/sessions:\/usr\/share\/wayland-sessions:\/usr\/share\/xsessions/' lightdm.conf
+if ! grep "^sessions-directory=" /etc/lightdm/lightdm.conf; then
+  sed -i '/^\[LightDM\]/s/\[LightDM\]/\[LightDM\]\nsessions-directory=\/usr\/share\/lightdm\/sessions:\/usr\/share\/wayland-sessions:\/usr\/share\/xsessions/' /etc/lightdm/lightdm.conf
 fi
 
-if ! grep "^greeters-directory=" ./lightdm.conf; then
-  sed -i '/^\[LightDM\]/s/\[LightDM\]/\[LightDM\]\ngreeters-directory=\/usr\/share\/lightdm\/greeters:\/usr\/share\/xgreeters/' lightdm.conf
+if ! grep "^greeters-directory=" /etc/lightdm/lightdm.conf; then
+  sed -i '/^\[LightDM\]/s/\[LightDM\]/\[LightDM\]\ngreeters-directory=\/usr\/share\/lightdm\/greeters:\/usr\/share\/xgreeters/' /etc/lightdm/lightdm.conf
 fi
 
-if ! grep "^greeter-session=" ./lightdm.conf; then
-  sed -i '/^\[Seat\:\*\]/s/\[Seat\:\*\]/\[Seat\:\*\]\ngreeter-session=lightdm-elephant-greeter/' lightdm.conf
+if ! grep "^greeter-session=" /etc/lightdm/lightdm.conf; then
+  sed -i '/^\[Seat\:\*\]/s/\[Seat\:\*\]/\[Seat\:\*\]\ngreeter-session=lightdm-elephant-greeter/' /etc/lightdm/lightdm.conf
 fi
 
 # ==============================================================================
