@@ -6,7 +6,9 @@ yay -S --noconfirm --needed \
   nautilus duf tmux sushi ffmpegthumbnailer \
   slurp satty \
   mpv evince imv \
-  chromium brave-bin bitwarden pipewire-pulse
+  bitwarden pipewire-pulse flatpak
+
+flatpak install flathub com.brave.Browser com.github.tchx84.Flatseal
 
 # Add screen recorder based on GPU
 if lspci | grep -qi 'nvidia'; then

@@ -26,7 +26,6 @@ show_subtext() {
 }
 
 # Install prerequisites
-source $OMARCHY_INSTALL/preflight/aur.sh
 source $OMARCHY_INSTALL/preflight/presentation.sh
 
 # Configuration
