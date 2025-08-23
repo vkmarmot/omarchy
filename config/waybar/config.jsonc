@@ -50,8 +50,7 @@
     "on-click": "kitty -e btop",
   },
   "clock": {
-    "format": "{:%A %H:%M}",
-    "format-alt": "{:%d %B W%V %Y}",
+    "format": "{:%A %d %B W%V %Y %H:%M}",
     "tooltip": false,
     "on-click-right": "~/.local/share/omarchy/bin/omarchy-cmd-tzupdate",
   },
@@ -81,6 +80,7 @@
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
+    "on-click": "kitty -e battop",
     "states": {
       "warning": 20,
       "critical": 10,
